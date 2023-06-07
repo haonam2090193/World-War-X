@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    PlayerControl playerControl;
+
+    [SerializeField] private Vector2 movementInput;
+
+    private void OnEnable()
     {
-        
+        if(playerControl == null)
+        {
+            playerControl = new PlayerControl();
+
+            playerControl.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+        }
+        playerControl.Enable();
+    }
+    private void OnDisable()
+    {
+        playerControl.Disable();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
