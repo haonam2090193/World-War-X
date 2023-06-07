@@ -5,10 +5,17 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     PlayerControl playerControl;
+    [SerializeField] AnimationManager animationManager;
 
-    [SerializeField] private Vector2 movementInput;
+    [SerializeField] private Vector2 movementInput;    
     [SerializeField] public float verticalInput;
     [SerializeField] public float horizontalInput;
+
+    private float moveAmount;
+    private void Awake()
+    {
+        animationManager = GetComponent<AnimationManager>();
+    }
     private void OnEnable()
     {
         if(playerControl == null)
@@ -32,5 +39,7 @@ public class InputManager : MonoBehaviour
     {
         verticalInput = movementInput.y;
         horizontalInput = movementInput.x;
+        moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));
+        animationManager.UpdateAnimationValues(0, moveAmount);
     }
 }
