@@ -7,7 +7,8 @@ public class InputManager : MonoBehaviour
     PlayerControl playerControl;
 
     [SerializeField] private Vector2 movementInput;
-
+    [SerializeField] public float verticalInput;
+    [SerializeField] public float horizontalInput;
     private void OnEnable()
     {
         if(playerControl == null)
@@ -23,4 +24,13 @@ public class InputManager : MonoBehaviour
         playerControl.Disable();
     }
 
+    public void HandleAllInput()
+    {
+        HandleMovementInput();
+    }
+    public void HandleMovementInput()
+    {
+        verticalInput = movementInput.y;
+        horizontalInput = movementInput.x;
+    }
 }
