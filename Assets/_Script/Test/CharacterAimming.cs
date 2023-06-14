@@ -23,7 +23,9 @@ public class CharacterAimming : MonoBehaviour
     }
     private void Update()
     {
-        if(aimLayer != null)
+        float yawCamera = mainCam.transform.rotation.eulerAngles.y; //lay goc quay cua truc Y
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yawCamera, 0), turnSpeed * Time.deltaTime);
+        if (aimLayer != null)
         {
             if (Input.GetMouseButton(1))
             {
@@ -39,6 +41,11 @@ public class CharacterAimming : MonoBehaviour
         {
             raycastWeapon.StartFiring();
         }
+        if (raycastWeapon.isFiring)
+        {
+            raycastWeapon.UpdateFiring(Time.deltaTime);
+        }
+        raycastWeapon.UpdateBullets(Time.deltaTime);
         if (Input.GetButtonUp("Fire1"))
         {
             raycastWeapon.StopFiring();
@@ -47,7 +54,6 @@ public class CharacterAimming : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float yawCamera = mainCam.transform.rotation.eulerAngles.y; //lay goc quay cua truc Y
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yawCamera, 0), turnSpeed * Time.fixedDeltaTime);
+        
     }
 }
