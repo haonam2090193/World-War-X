@@ -1,0 +1,9 @@
+T (generic) : có thể dùng cho mọi kiểu dữ liệu khác nhau
+
+where : giới hạn kiểu dữ liệu mà ta muốn
+
+design pattern : được tạo ra để 
+
+toRotation : là chỉ hướng đi dựa trên trục Y
+
+Quaternion.RotateTowards : chuyển hướng nhân vật dựa trên toRotation
