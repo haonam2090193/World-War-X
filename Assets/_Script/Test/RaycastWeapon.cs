@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class RaycastWeapon : MonoBehaviour
@@ -9,14 +10,14 @@ public class RaycastWeapon : MonoBehaviour
         public float time;
         public Vector3 initialPoisition;
         public Vector3 initialVelocity;
-        public TrailRenderer tracer;
+        public TrailRenderer tracer;       
     }
     public bool isFiring = false;
-    public int fireRate = 25;
+    public float fireRate = 25;
     public float bulletSpeed = 1000f;
     public float bulletDrop = 0.0f;
 
-    public ParticleSystem[] muzzleFlash;
+    public ParticleSystem[] weaponParticle;
     public Transform raycastOrigin;
     public Transform RaycastDes;
     public ParticleSystem hitEffect;
@@ -36,7 +37,7 @@ public class RaycastWeapon : MonoBehaviour
 
     Bullet CreateBullet(Vector3 poisiton, Vector3 velocity)
     {
-        Bullet bullet = new Bullet();
+        Bullet bullet = new Bullet();        
         bullet.initialPoisition = poisiton;
         bullet.initialVelocity = velocity;
         bullet.time = 0.0f;
@@ -49,7 +50,7 @@ public class RaycastWeapon : MonoBehaviour
     {
         accumulatedTime = 0.0f;
         isFiring = true;
-        FireBullet();
+        //FireBullet();
     }
     public void UpdateFiring(float deltaTime)
     {
@@ -91,10 +92,11 @@ public class RaycastWeapon : MonoBehaviour
         {
            hitEffect.transform.position = hitInfo.point;
            hitEffect.transform.forward = hitInfo.normal;
-           hitEffect.Emit(1);               
+           hitEffect.Emit(1);
 
            bullet.tracer.transform.position = hitInfo.point;
-            bullet.time = maxLifeTime;        
+            bullet.time = maxLifeTime;
+            
         }
         else
         {
@@ -103,7 +105,7 @@ public class RaycastWeapon : MonoBehaviour
     }
     private void FireBullet()
     {
-        foreach (var p in muzzleFlash)
+        foreach (var p in weaponParticle)
         {
             p.Emit(1);
         }
