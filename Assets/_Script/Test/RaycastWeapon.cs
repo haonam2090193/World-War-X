@@ -71,7 +71,7 @@ public class RaycastWeapon : MonoBehaviour
         bullets.ForEach(bullet =>
         {
             Vector3 p0 = GetPosition(bullet);
-            bullet.time += Time.deltaTime;
+            bullet.time += deltaTime;
             Vector3 p1 = GetPosition(bullet);
             RaycastSegment(p0, p1, bullet);
         });
@@ -84,14 +84,15 @@ public class RaycastWeapon : MonoBehaviour
     void RaycastSegment(Vector3 start,Vector3 end,Bullet bullet)
     {
         Vector3 direction = end - start;
-        float distance = (end - start).magnitude;
+        float distance = direction.magnitude;
         ray.origin = start;
-        ray.direction = end - start;
-        if (Physics.Raycast(ray, out hitInfo))
+        ray.direction = direction;
+        if (Physics.Raycast(ray, out hitInfo,distance))
         {
            hitEffect.transform.position = hitInfo.point;
            hitEffect.transform.forward = hitInfo.normal;
            hitEffect.Emit(1);               
+
            bullet.tracer.transform.position = hitInfo.point;
             bullet.time = maxLifeTime;        
         }
