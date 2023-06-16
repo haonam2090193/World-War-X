@@ -21,7 +21,9 @@ public class RaycastWeapon : MonoBehaviour
     public Transform raycastOrigin;
     public Transform RaycastDes;
     public ParticleSystem hitEffect;
+    //public ParticleSystem shellEffect;
     public TrailRenderer tracerEffect;
+
 
     public Ray ray;
     private RaycastHit hitInfo;
@@ -111,7 +113,7 @@ public class RaycastWeapon : MonoBehaviour
         }
         Vector3 velocity = (RaycastDes.position - raycastOrigin.position).normalized * bulletSpeed;
         var bullet = CreateBullet(raycastOrigin.position,velocity);
-        bullets.Add(bullet);      
+        bullets.Add(bullet);
     }
     public void StopFiring()
     {
