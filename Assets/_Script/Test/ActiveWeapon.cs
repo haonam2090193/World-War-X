@@ -1,15 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 
 public class ActiveWeapon : MonoBehaviour
 {
     public Transform crossHairTarget;
-    public Rig handIK;
     public Transform weaponParent;
 
     private RaycastWeapon raycastWeapon;
+    public Animator rigController;
 
 
     private void Awake()
@@ -41,12 +40,12 @@ public class ActiveWeapon : MonoBehaviour
             {
                 raycastWeapon.StopFiring();
             }
-        }
-        else
-        {
-            handIK.weight = 0f;
-        }
-
+            if(Input.GetKeyDown(KeyCode.X))
+            {
+                bool isHoldstered = rigController.GetBool("holdster_weapon");
+                rigController.SetBool("holdster_weapon", !isHoldstered);
+            }
+        }       
     }
     public void Equip(RaycastWeapon newWeapon)
     {
@@ -59,6 +58,6 @@ public class ActiveWeapon : MonoBehaviour
         raycastWeapon.transform.parent = weaponParent;
         raycastWeapon.transform.localPosition = Vector3.zero;
         raycastWeapon.transform.localRotation = Quaternion.identity;
-        handIK.weight = 1f;
+        rigController.Play("equip_" + raycastWeapon.weaponName);
     }
 }
