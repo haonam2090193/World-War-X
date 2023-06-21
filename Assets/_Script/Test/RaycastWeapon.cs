@@ -12,8 +12,11 @@ public class RaycastWeapon : MonoBehaviour
         public Vector3 initialVelocity;
         public TrailRenderer tracer;       
     }
+
+    public ActiveWeapon.WeaponSlot weaponSlot;
+
     public string weaponName;
-    public bool isFiring = false;
+    public bool isFiring = false;    
     public float fireRate = 25;
     public float bulletSpeed = 1000f;
     public float bulletDrop = 0.0f;
