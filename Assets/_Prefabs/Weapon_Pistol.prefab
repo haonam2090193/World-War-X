@@ -879,6 +879,7 @@ GameObject:
   - component: {fileID: 5655327877862665968}
   - component: {fileID: 5621370633323890160}
   - component: {fileID: 5631533397998266466}
+  - component: {fileID: 7462169690160402435}
   m_Layer: 0
   m_Name: SM_Wep_Revolver_01
   m_TagString: Untagged
@@ -955,6 +956,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7462169690160402435
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5653815000275672364}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: f39075352f338ed4bab66d58d40f6f53, type: 3}
 --- !u!1 &8027959705842000536
 GameObject:
   m_ObjectHideFlags: 0
@@ -5938,6 +5953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8325b48e27ee2468035eb925bd72a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSlot: 1
   weaponName: pistol
   isFiring: 0
   fireRate: 1

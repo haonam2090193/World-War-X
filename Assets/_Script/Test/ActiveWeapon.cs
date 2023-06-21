@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class ActiveWeapon : MonoBehaviour
 {
+    public enum WeaponSlot
+    {
+        Primary = 0,
+        Secondary = 1
+    };
     public Transform crossHairTarget;
-    public Transform weaponParent;
+    public Transform[] weaponSlots;
 
-    private RaycastWeapon raycastWeapon;
+    private RaycastWeapon[] equippedWeapon = new RaycastWeapon[2];
+    private int activeWeaponIdx;
     public Animator rigController;
 
 
@@ -25,6 +31,7 @@ public class ActiveWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var raycastWeapon = GetWeapon(activeWeaponIdx);
         if (raycastWeapon)
         {
             if (Input.GetButtonDown("Fire1"))
@@ -42,22 +49,88 @@ public class ActiveWeapon : MonoBehaviour
             }
             if(Input.GetKeyDown(KeyCode.X))
             {
-                bool isHoldstered = rigController.GetBool("holdster_weapon");
-                rigController.SetBool("holdster_weapon", !isHoldstered);
+                ToggleActiveWeapon();
             }
-        }       
+            
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SetActivateWeapon(WeaponSlot.Primary);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SetActivateWeapon(WeaponSlot.Secondary);
+        }
     }
     public void Equip(RaycastWeapon newWeapon)
     {
+        int weaponSlotIndex = (int)newWeapon.weaponSlot;
+        var raycastWeapon = GetWeapon(weaponSlotIndex);
         if(raycastWeapon)
         {
             Destroy(raycastWeapon.gameObject);
         }
         raycastWeapon = newWeapon;
         raycastWeapon.RaycastDes = crossHairTarget;
-        raycastWeapon.transform.parent = weaponParent;
-        raycastWeapon.transform.localPosition = Vector3.zero;
-        raycastWeapon.transform.localRotation = Quaternion.identity;
-        rigController.Play("equip_" + raycastWeapon.weaponName);
+        raycastWeapon.transform.SetParent(weaponSlots[weaponSlotIndex],false);
+        SetActivateWeapon(newWeapon.weaponSlot);
+    }
+    private void SetActivateWeapon(WeaponSlot weaponSlot)
+    {
+        int hosterIndex = activeWeaponIdx;
+        int activeIndex = (int)weaponSlot;
+        StartCoroutine(SwitchWeapon(hosterIndex, activeIndex));
+    }
+    private void ToggleActiveWeapon()
+    {
+        bool isHolstered = rigController.GetBool("hoster_weapon");
+        if(isHolstered)
+        {
+            StartCoroutine(ActivateWeapon(activeWeaponIdx));
+        }
+        else
+        {
+            StartCoroutine(HosterWeapon(activeWeaponIdx));
+        }
+    }
+    private RaycastWeapon GetWeapon(int index)
+    {
+        if(index < 0 || index >= equippedWeapon.Length)
+        {
+            return null;
+        }
+        return equippedWeapon[index];
+    }
+    private IEnumerator SwitchWeapon(int holsterIndex, int activateIndex)
+    {
+        yield return StartCoroutine(HosterWeapon(holsterIndex));
+        yield return StartCoroutine(ActivateWeapon(activateIndex));
+        activeWeaponIdx = activateIndex;
+    }
+    private IEnumerator HosterWeapon(int index)
+    {
+        var weapon = GetWeapon(index);
+        if (weapon)
+        {
+            rigController.SetBool("holdster_weapon", true);
+            do
+            {
+                yield return new WaitForEndOfFrame();
+            } while (rigController.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
+
+        }
+    }
+    private IEnumerator ActivateWeapon(int index)
+    {
+        var weapon = GetWeapon(index);
+        if (weapon)
+        {
+            rigController.SetBool("holdster_weapon", false);
+            rigController.Play("equip_" + weapon.weaponName);
+            do
+            {
+                yield return new WaitForEndOfFrame();
+            } while (rigController.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
+        }
     }
 }

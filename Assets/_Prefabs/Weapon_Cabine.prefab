@@ -800,7 +800,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 43144873080441822, guid: 0558ac4086ee63e40ab4805535677eab, type: 2}
 --- !u!1 &7365187835361354795
@@ -6037,6 +6037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8325b48e27ee2468035eb925bd72a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponName: 
   isFiring: 0
   fireRate: 20
   bulletSpeed: 950
