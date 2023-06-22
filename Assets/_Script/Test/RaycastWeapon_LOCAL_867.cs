@@ -12,13 +12,9 @@ public class RaycastWeapon : MonoBehaviour
         public Vector3 initialVelocity;
         public TrailRenderer tracer;       
     }
-<<<<<<< HEAD
 
     public ActiveWeapon.WeaponSlot weaponSlot;
 
-=======
-    public ActiveWeapon.WeaponSlot weaponSlot;
->>>>>>> origin/20230607_Characters
     public string weaponName;
     public bool isFiring = false;    
     public float fireRate = 25;

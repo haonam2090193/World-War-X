@@ -37,56 +37,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.6666667
-<<<<<<< HEAD
         value: {x: -258.4, y: 35.632996, z: 30.343002}
-=======
-        value: {x: 138.903, y: 13.587997, z: -3.350006}
-        inSlope: {x: -272.64017, y: 0, z: -5.0427203}
-        outSlope: {x: -272.64017, y: 0, z: -5.0427203}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.68333334
-        value: {x: 132.512, y: 13.035004, z: -3.7369995}
-        inSlope: {x: -540.15063, y: -66.359314, z: -46.43925}
-        outSlope: {x: -540.15063, y: -66.359314, z: -46.43925}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.7
-        value: {x: 120.897995, y: 6.5599976, z: -14.369019}
-        inSlope: {x: -717.57043, y: 0, z: 0}
-        outSlope: {x: -717.57043, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.71666664
-        value: {x: 108.593, y: 10.826996, z: -9.104004}
-        inSlope: {x: -517.1997, y: 254.24997, z: 299.91003}
-        outSlope: {x: -517.1997, y: 254.24997, z: 299.91003}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.73333335
-        value: {x: 103.65799, y: 15.035004, z: -4.3720093}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
-      - serializedVersion: 3
-        time: 0.75
-        value: {x: 103.658, y: 15.035004, z: -4.3720093}
->>>>>>> origin/20230607_Characters
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -335,11 +286,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-<<<<<<< HEAD
         time: 0.6666667
-=======
-        time: 0.75
->>>>>>> origin/20230607_Characters
         value: 1
         inSlope: 0
         outSlope: 0
@@ -348,11 +295,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-<<<<<<< HEAD
         time: 0.68333334
-=======
-        time: 0.76666665
->>>>>>> origin/20230607_Characters
         value: 0
         inSlope: 0
         outSlope: 0
@@ -364,11 +307,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Data.m_SourceObjects.m_Item0.weight
-<<<<<<< HEAD
     path: RigLayer_WeaponAiming/PrimaryWeapon
-=======
-    path: RigLayer_WeaponAiming/SecondaryWeapon
->>>>>>> origin/20230607_Characters
     classID: 114
     script: {fileID: 11500000, guid: 8935e03361a14ec4b8edc872f76bc822, type: 3}
   - curve:
@@ -384,11 +323,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-<<<<<<< HEAD
         time: 0.6666667
-=======
-        time: 0.75
->>>>>>> origin/20230607_Characters
         value: 0
         inSlope: 0
         outSlope: 0
@@ -397,11 +332,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-<<<<<<< HEAD
         time: 0.68333334
-=======
-        time: 0.76666665
->>>>>>> origin/20230607_Characters
         value: 1
         inSlope: 0
         outSlope: 0
@@ -413,11 +344,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Data.m_SourceObjects.m_Item1.weight
-<<<<<<< HEAD
     path: RigLayer_WeaponAiming/PrimaryWeapon
-=======
-    path: RigLayer_WeaponAiming/SecondaryWeapon
->>>>>>> origin/20230607_Characters
     classID: 114
     script: {fileID: 11500000, guid: 8935e03361a14ec4b8edc872f76bc822, type: 3}
   m_PPtrCurves: []
@@ -464,22 +391,14 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-<<<<<<< HEAD
       path: 1764024066
-=======
-      path: 3665204164
->>>>>>> origin/20230607_Characters
       attribute: 1711255866
       script: {fileID: 11500000, guid: 8935e03361a14ec4b8edc872f76bc822, type: 3}
       typeID: 114
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-<<<<<<< HEAD
       path: 1764024066
-=======
-      path: 3665204164
->>>>>>> origin/20230607_Characters
       attribute: 2840965540
       script: {fileID: 11500000, guid: 8935e03361a14ec4b8edc872f76bc822, type: 3}
       typeID: 114
@@ -1069,56 +988,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6666667
-<<<<<<< HEAD
         value: -258.4
-=======
-        value: 138.903
-        inSlope: -272.64017
-        outSlope: -272.64017
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.68333334
-        value: 132.512
-        inSlope: -540.15063
-        outSlope: -540.15063
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.7
-        value: 120.897995
-        inSlope: -717.57043
-        outSlope: -717.57043
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.71666664
-        value: 108.593
-        inSlope: -517.1997
-        outSlope: -517.1997
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.73333335
-        value: 103.65799
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.75
-        value: 103.658
->>>>>>> origin/20230607_Characters
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -1276,87 +1146,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-<<<<<<< HEAD
     attribute: m_Data.m_SourceObjects.m_Item1.weight
     path: RigLayer_WeaponAiming/PrimaryWeapon
-=======
-    attribute: localEulerAnglesRaw.z
-    path: WeaponHolder/WeaponPivot/RightHandGrip
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.75
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.76666665
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Data.m_SourceObjects.m_Item0.weight
-    path: RigLayer_WeaponAiming/SecondaryWeapon
-    classID: 114
-    script: {fileID: 11500000, guid: 8935e03361a14ec4b8edc872f76bc822, type: 3}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.75
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.76666665
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_Data.m_SourceObjects.m_Item1.weight
-    path: RigLayer_WeaponAiming/SecondaryWeapon
->>>>>>> origin/20230607_Characters
     classID: 114
     script: {fileID: 11500000, guid: 8935e03361a14ec4b8edc872f76bc822, type: 3}
   m_EulerEditorCurves:
