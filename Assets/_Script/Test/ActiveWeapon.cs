@@ -41,29 +41,35 @@ public class ActiveWeapon : MonoBehaviour
             {
                 weapon.StartFiring();
             }
+
             if (weapon.isFiring)
             {
                 weapon.UpdateFiring(Time.deltaTime);
             }
+
             weapon.UpdateBullets(Time.deltaTime);
+
             if (Input.GetButtonUp("Fire1"))
             {
                 weapon.StopFiring();
             }
+
             if(Input.GetKeyDown(KeyCode.X))
             {
                 ToggleActiveWeapon();
             }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                SetActiveWeapon(WeaponSlot.Primary);
+            }
+            if (!Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                SetActiveWeapon(WeaponSlot.Secondary);
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetActiveWeapon(WeaponSlot.Primary);
-        }
-        if (!Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetActiveWeapon(WeaponSlot.Secondary);
-        }
+
     }
     public void Equip (RaycastWeapon newWeapon)
     {
@@ -77,7 +83,8 @@ public class ActiveWeapon : MonoBehaviour
         weapon.RaycastDes = crossHairTarget;
         weapon.transform.SetParent(weaponSlots[weaponSlotIndex],false);     
         equipped_Weapon[weaponSlotIndex] = weapon;
-        activeWeaponIndex = weaponSlotIndex;
+
+     //   activeWeaponIndex = weaponSlotIndex;
 
         SetActiveWeapon(newWeapon.weaponSlot);
     }
@@ -100,6 +107,10 @@ public class ActiveWeapon : MonoBehaviour
         int hosterIndex = activeWeaponIndex;
         int activateIndex = (int)weaponSlot;
         StartCoroutine(SwitchWeapon(hosterIndex, activateIndex));
+        if(hosterIndex == activeWeaponIndex)
+        {
+            hosterIndex = -1;
+        }
     }
     IEnumerator SwitchWeapon(int hosterIndex, int activateIndex)
     {
@@ -113,6 +124,7 @@ public class ActiveWeapon : MonoBehaviour
         if(weapon)
         {
             rigController.SetBool("holdster_weapon", true);
+            yield return new WaitForSeconds(0.1f);
             do
             {
                 yield return new WaitForEndOfFrame();
