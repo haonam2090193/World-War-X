@@ -471,13 +471,8 @@ Transform:
   - {fileID: 1146261742}
   - {fileID: 128213274}
   - {fileID: 1118073052}
-<<<<<<< HEAD
-  - {fileID: 642504177}
-  - {fileID: 850339285}
-=======
   - {fileID: 1705615558}
   - {fileID: 808319357}
->>>>>>> origin/20230607_Characters
   m_Father: {fileID: 838794227}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1664,13 +1659,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2140069751}
-<<<<<<< HEAD
-  - {fileID: 1372979060}
-  - {fileID: 1630563800}
-=======
   - {fileID: 2036973962}
   - {fileID: 1690375163}
->>>>>>> origin/20230607_Characters
   m_Father: {fileID: 838794227}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2378,11 +2368,7 @@ Transform:
   m_Father: {fileID: 836721039}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
---- !u!1 &1372979059
-=======
 --- !u!1 &1398286617
->>>>>>> origin/20230607_Characters
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2390,46 +2376,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 1372979060}
-  - component: {fileID: 1372979061}
-  m_Layer: 0
-  m_Name: PrimaryWeapon
-=======
   - component: {fileID: 1398286618}
   - component: {fileID: 1398286620}
   - component: {fileID: 1398286619}
   - component: {fileID: 1398286621}
   m_Layer: 0
   m_Name: IgnoreZone
->>>>>>> origin/20230607_Characters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!4 &1372979060
-=======
 --- !u!4 &1398286618
->>>>>>> origin/20230607_Characters
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1372979059}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1069365155}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1372979061
-=======
   m_GameObject: {fileID: 1398286617}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.87, z: -2.2}
@@ -2469,66 +2432,17 @@ Rigidbody:
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1398286621
->>>>>>> origin/20230607_Characters
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1372979059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8935e03361a14ec4b8edc872f76bc822, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Weight: 1
-  m_Data:
-    m_ConstrainedObject: {fileID: 1372979060}
-    m_SourceObjects:
-      m_Length: 2
-      m_Item0:
-        transform: {fileID: 568967663}
-        weight: 0
-      m_Item1:
-        transform: {fileID: 642504177}
-        weight: 1
-      m_Item2:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item3:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item4:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item5:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item6:
-        transform: {fileID: 0}
-        weight: 0
-      m_Item7:
-        transform: {fileID: 0}
-        weight: 0
-    m_ConstrainedPositionAxes:
-      x: 1
-      y: 1
-      z: 1
-    m_ConstrainedRotationAxes:
-      x: 1
-      y: 1
-      z: 1
-    m_MaintainPositionOffset: 0
-    m_MaintainRotationOffset: 0
-=======
   m_GameObject: {fileID: 1398286617}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8b4b4d79f820054b81bda79f495b812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
->>>>>>> origin/20230607_Characters
 --- !u!1 &1417467466
 GameObject:
   m_ObjectHideFlags: 0
@@ -7556,13 +7470,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crossHairTarget: {fileID: 180179264}
   weaponSlots:
-<<<<<<< HEAD
-  - {fileID: 1372979060}
-  - {fileID: 1630563800}
-=======
   - {fileID: 2036973962}
   - {fileID: 1690375163}
->>>>>>> origin/20230607_Characters
   rigController: {fileID: 838794228}
 --- !u!137 &137008222661947873
 SkinnedMeshRenderer:
