@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class RaycastWeapon : MonoBehaviour
@@ -8,71 +7,61 @@ public class RaycastWeapon : MonoBehaviour
     class Bullet
     {
         public float time;
-        public Vector3 initialPoisition;
+        public Vector3 initialPosition;
         public Vector3 initialVelocity;
-        public TrailRenderer tracer;       
+        public TrailRenderer tracer;
     }
 
     public ActiveWeapon.WeaponSlot weaponSlot;
     public string weaponName;
-    public bool isFiring = false;    
-    public float fireRate = 25;
+    public bool isFiring = false;
+    public int fireRate = 25;
     public float bulletSpeed = 1000f;
-    public float bulletDrop = 0.0f;
-
-    public ParticleSystem[] weaponParticle;
-    public Transform raycastOrigin;
-    public Transform RaycastDes;
+    public float bulletDrop = 0f;
+    public ParticleSystem[] muzzleFlash;
     public ParticleSystem hitEffect;
-    //public ParticleSystem shellEffect;
     public TrailRenderer tracerEffect;
 
+    public Transform raycastOrigin;
+    public Transform raycastDestination;
+    public WeaponRecoil weaponRecoil;
 
-    public Ray ray;
+    private Ray ray;
     private RaycastHit hitInfo;
-    private float accumulatedTime = 0.0f;
-    float maxLifeTime = 3.0f;
-    List<Bullet> bullets = new List<Bullet>();
+    private float accumulatedTime;
+    private List<Bullet> bullets = new List<Bullet>();
+    private float maxLifetime = 3f;
 
-    Vector3 GetPosition(Bullet bullet)
+    private void Awake()
     {
-        Vector3 gravity = Vector3.down * bulletDrop;
-        return (bullet.initialPoisition) + (bullet.initialVelocity * bullet.time) + (0.5f * gravity * bullet.time * bullet.time);
-    }
-
-    Bullet CreateBullet(Vector3 poisiton, Vector3 velocity)
-    {
-        Bullet bullet = new Bullet();        
-        bullet.initialPoisition = poisiton;
-        bullet.initialVelocity = velocity;
-        bullet.time = 0.0f;
-        bullet.tracer = Instantiate(tracerEffect, poisiton, Quaternion.identity);
-        bullet.tracer.AddPosition(poisiton);
-        return bullet;
+        weaponRecoil = GetComponent<WeaponRecoil>();
     }
 
     public void StartFiring()
     {
-        accumulatedTime = 0.0f;
         isFiring = true;
-        //FireBullet();
+        accumulatedTime = 0f;
+        FireBullet();
+        weaponRecoil.Reset();
     }
+
     public void UpdateFiring(float deltaTime)
     {
         accumulatedTime += deltaTime;
         float fireInterval = 1.0f / fireRate;
-        while (accumulatedTime >= 0.0f)
+        while (accumulatedTime >= 0f)
         {
             FireBullet();
             accumulatedTime -= fireInterval;
         }
     }
-    public void UpdateBullets(float deltaTime)
+
+    public void StopFiring()
     {
-        SimulateBullets(deltaTime);
-        DestroyBullet();
+        isFiring = false;
     }
-    void SimulateBullets(float deltaTime)
+
+    public void UpdateBullets(float deltaTime)
     {
         bullets.ForEach(bullet =>
         {
@@ -81,45 +70,72 @@ public class RaycastWeapon : MonoBehaviour
             Vector3 p1 = GetPosition(bullet);
             RaycastSegment(p0, p1, bullet);
         });
-    }
-    void DestroyBullet()
-    {
-        bullets.RemoveAll(bullets => bullets.time >= maxLifeTime);
+
+        DestroyBullets();
     }
 
-    void RaycastSegment(Vector3 start,Vector3 end,Bullet bullet)
+    private void DestroyBullets()
+    {
+        bullets.RemoveAll(bullet => bullet.time >= maxLifetime);
+    }
+
+    private void FireBullet()
+    {
+        foreach (var item in muzzleFlash)
+        {
+            item.Emit(1);
+        }
+
+        Vector3 velocity = (raycastDestination.position - raycastOrigin.position).normalized * bulletSpeed;
+        var bullet = CreateBullet(raycastOrigin.position, velocity);
+        bullets.Add(bullet);
+
+        weaponRecoil.GenerateRecoil(weaponName);
+    }
+
+    private Vector3 GetPosition(Bullet bullet)
+    {
+        //p = p0 + v*t + 1/2*g*t*t
+        Vector3 gravity = Vector3.down * bulletDrop;
+        return (bullet.initialPosition) + (bullet.initialVelocity * bullet.time) + (0.5f * gravity * bullet.time * bullet.time);
+    }
+
+    private void RaycastSegment(Vector3 start, Vector3 end, Bullet bullet)
     {
         Vector3 direction = end - start;
         float distance = direction.magnitude;
         ray.origin = start;
         ray.direction = direction;
-        if (Physics.Raycast(ray, out hitInfo,distance))
+        if (Physics.Raycast(ray, out hitInfo, distance))
         {
-           hitEffect.transform.position = hitInfo.point;
-           hitEffect.transform.forward = hitInfo.normal;
-           hitEffect.Emit(1);
+            hitEffect.transform.position = hitInfo.point;
+            hitEffect.transform.forward = hitInfo.normal;
+            hitEffect.Emit(1);
 
-           bullet.tracer.transform.position = hitInfo.point;
-            bullet.time = maxLifeTime;
-            
+            bullet.tracer.transform.position = hitInfo.point;
+            bullet.time = maxLifetime;
+            end = hitInfo.point;
+
+            var rigidbody = hitInfo.collider.GetComponent<Rigidbody>();
+            if (rigidbody)
+            {
+                rigidbody.AddForceAtPosition(ray.direction * 10, hitInfo.point, ForceMode.Impulse);
+            }
         }
-        else
-        {
-            bullet.tracer.transform.position = end;
-        }
+
+        bullet.tracer.transform.position = end;
     }
-    private void FireBullet()
+
+    private Bullet CreateBullet(Vector3 position, Vector3 velocity)
     {
-        foreach (var p in weaponParticle)
+        Bullet bullet = new Bullet()
         {
-            p.Emit(1);
-        }
-        Vector3 velocity = (RaycastDes.position - raycastOrigin.position).normalized * bulletSpeed;
-        var bullet = CreateBullet(raycastOrigin.position,velocity);
-        bullets.Add(bullet);
-    }
-    public void StopFiring()
-    {
-        isFiring = false;
+            initialPosition = position,
+            initialVelocity = velocity,
+            time = 0f,
+            tracer = Instantiate(tracerEffect, position, Quaternion.identity)
+        };
+        bullet.tracer.AddPosition(position);
+        return bullet;
     }
 }

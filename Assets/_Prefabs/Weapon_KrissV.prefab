@@ -4977,6 +4977,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8653831498186684880}
   - component: {fileID: 1213063418011524057}
+  - component: {fileID: -6255273768545469091}
+  - component: {fileID: -6100050056388504632}
   m_Layer: 0
   m_Name: Weapon_KrissV
   m_TagString: Untagged
@@ -5014,20 +5016,108 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8325b48e27ee2468035eb925bd72a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSlot: 0
   weaponName: krissv
   isFiring: 0
   fireRate: 20
   bulletSpeed: 950
   bulletDrop: 10
-  weaponParticle:
+  muzzleFlash:
   - {fileID: 8851904219826141029}
   - {fileID: 8852603944271325287}
   - {fileID: 8027959705842000538}
-  raycastOrigin: {fileID: 8653831498011322401}
-  RaycastDes: {fileID: 0}
   hitEffect: {fileID: 8852456197351701348}
   tracerEffect: {fileID: 8104465573520009327, guid: d7248b14a64e2844eac4165f1dd98d2c,
     type: 3}
+  raycastOrigin: {fileID: 8653831498011322401}
+  raycastDestination: {fileID: 0}
+  weaponRecoil: {fileID: 0}
+--- !u!114 &-6255273768545469091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8653831498186684881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cac6644c5ea8e7a46b830653ad0c7a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 0}
+  cameraShake: {fileID: 0}
+  rigController: {fileID: 0}
+  recoilPattern:
+  - {x: 10, y: 10}
+  - {x: 7, y: 10}
+  - {x: 5, y: 10}
+  - {x: 2, y: 10}
+  - {x: 1, y: 10}
+  - {x: -2, y: 10}
+  - {x: -5, y: 10}
+  - {x: -7, y: 10}
+  - {x: -10, y: 10}
+  - {x: -3, y: 10}
+  - {x: -1, y: 10}
+  - {x: -4, y: 10}
+  - {x: 2, y: 10}
+  - {x: 5, y: 10}
+  - {x: 8, y: 10}
+  - {x: 4, y: 5}
+  duration: 0.1
+--- !u!114 &-6100050056388504632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8653831498186684881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 2
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 3
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 11400000, guid: 1edeea88d65dc3c48b8b56b2fa593c85, type: 2}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1 &8654522811097862237
 GameObject:
   m_ObjectHideFlags: 0
