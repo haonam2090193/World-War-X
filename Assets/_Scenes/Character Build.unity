@@ -757,7 +757,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372714343}
-  m_LocalRotation: {x: 0.13323411, y: 0.000000008526489, z: -0.0000000011462383, w: 0.99108464}
+  m_LocalRotation: {x: 0.13323411, y: -0.000000008526489, z: 0.0000000011462383, w: 0.99108464}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1372,7 +1372,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784114929}
-  m_LocalRotation: {x: 0.1332341, y: 0.00000000852649, z: -0.0000000011462384, w: 0.9910846}
+  m_LocalRotation: {x: 0.1332341, y: -0.00000000852649, z: 0.0000000011462384, w: 0.9910846}
   m_LocalPosition: {x: -10.75, y: 2.7893493, z: -16.650772}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1791,6 +1791,7 @@ GameObject:
   m_Component:
   - component: {fileID: 838794227}
   - component: {fileID: 838794228}
+  - component: {fileID: 838794229}
   m_Layer: 0
   m_Name: ------------RigLayer------------
   m_TagString: Untagged
@@ -1838,6 +1839,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &838794229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838794226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32cf5832ee1a3014cb28c49609e2a74e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1069365154
 GameObject:
   m_ObjectHideFlags: 0
@@ -2981,8 +2994,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650071343}
-  m_LocalRotation: {x: 0.115232445, y: 0.000000017091761, z: -0.0000000019827333,
-    w: 0.9933386}
+  m_LocalRotation: {x: 0.115232445, y: -0.000000017091766, z: 0.000000001982734, w: 0.9933386}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4598,6 +4610,7 @@ GameObject:
   - component: {fileID: 440908136}
   - component: {fileID: 440908137}
   - component: {fileID: 95810333299285908}
+  - component: {fileID: 95810333299285909}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -7551,6 +7564,22 @@ MonoBehaviour:
   - {fileID: 801553288}
   - {fileID: 791260081}
   playerCamera: {fileID: 190949384}
+--- !u!114 &95810333299285909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539600368641075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 500f250fb8614f2468cfde63aa9d7c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigController: {fileID: 838794228}
+  animationEvents: {fileID: 838794229}
+  activeWeapon: {fileID: 95810333299285908}
+  leftHand: {fileID: 4690655710434649}
 --- !u!137 &137008222661947873
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -13390,6 +13419,7 @@ MonoBehaviour:
   hitEffect: {fileID: 0}
   tracerEffect: {fileID: 8104465573520009327, guid: d7248b14a64e2844eac4165f1dd98d2c,
     type: 3}
+  magazine: {fileID: 0}
   raycastOrigin: {fileID: 0}
   raycastDestination: {fileID: 0}
   weaponRecoil: {fileID: 0}

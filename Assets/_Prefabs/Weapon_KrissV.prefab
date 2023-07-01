@@ -5029,9 +5029,12 @@ MonoBehaviour:
   hitEffect: {fileID: 8852456197351701348}
   tracerEffect: {fileID: 8104465573520009327, guid: d7248b14a64e2844eac4165f1dd98d2c,
     type: 3}
+  magazine: {fileID: 8654914422136371495}
   raycastOrigin: {fileID: 8653831498011322401}
   raycastDestination: {fileID: 0}
   weaponRecoil: {fileID: 0}
+  ammoCount: 45
+  clipSize: 45
 --- !u!114 &-6255273768545469091
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,7 +15,6 @@ public class ActiveWeapon : MonoBehaviour
     public Transform crosshairTarget;
     public Transform[] weaponSlots;
     public CinemachineFreeLook playerCamera;
-
     private RaycastWeapon[] equippedWeapons = new RaycastWeapon[2];
     private int activeWeaponIdx;
     private bool isHolstered = false;
@@ -29,11 +28,10 @@ public class ActiveWeapon : MonoBehaviour
         }
     }
 
-    void Start()
+    public RaycastWeapon GetActiveWeapon()
     {
-
+        return GetWeapon(activeWeaponIdx);
     }
-
 
     void Update()
     {
