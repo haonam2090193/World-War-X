@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8104465573520009324}
   - component: {fileID: 8104465573520009327}
   m_Layer: 0
-  m_Name: BulletTracer
+  m_Name: BulletTracer_krissv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,10 +74,10 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.01
+  m_Time: 0.05
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.05
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:

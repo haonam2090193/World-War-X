@@ -1,20 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 
 public class CharacterAimming : MonoBehaviour
 {
     public float turnSpeed = 15f;
-    public float aimDur = 0.3f;
-    public Rig aimLayer;
+
+    public Transform ignoreZone;
+    public float radius;
+    public bool showGizmos;
 
     private Camera mainCam;
-    private RaycastWeapon raycastWeapon;
+
     private void Awake()
     {
         mainCam = Camera.main;
-        raycastWeapon = GetComponentInChildren<RaycastWeapon>();
+
     }
     void Start()
     {
@@ -23,37 +24,23 @@ public class CharacterAimming : MonoBehaviour
     }
     private void Update()
     {
+
         float yawCamera = mainCam.transform.rotation.eulerAngles.y; //lay goc quay cua truc Y
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, yawCamera, 0), turnSpeed * Time.deltaTime);
-        if (aimLayer != null)
+
+        Collider[] colliders = Physics.OverlapSphere(ignoreZone.position, radius);
+        foreach (var collider in colliders)
         {
-            if (Input.GetMouseButton(1))
+            if (!collider.gameObject.layer.Equals(LayerMask.NameToLayer("Ignore Raycast")))
             {
-                aimLayer.weight += Time.deltaTime / aimDur;
+                collider.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
             }
-            else
-            {
-                aimLayer.weight -= Time.deltaTime / aimDur;
-            }
-        }
-        
-        if (Input.GetButtonDown("Fire1"))
-        {
-            raycastWeapon.StartFiring();
-        }
-        if (raycastWeapon.isFiring)
-        {
-            raycastWeapon.UpdateFiring(Time.deltaTime);
-        }
-        raycastWeapon.UpdateBullets(Time.deltaTime);
-        if (Input.GetButtonUp("Fire1"))
-        {
-            raycastWeapon.StopFiring();
         }
     }
-    // Update is called once per frame
-    void FixedUpdate()
+    private void OnDrawGizmos()
     {
-        
+        if (!showGizmos) return;
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(ignoreZone.position, radius);
     }
 }
