@@ -28,7 +28,7 @@ public class RaycastWeapon : MonoBehaviour
     public WeaponRecoil weaponRecoil;
     public int ammoCount;
     public int clipSize;
-
+    public float damage;
 
     private Ray ray;
     private RaycastHit hitInfo;
@@ -85,7 +85,7 @@ public class RaycastWeapon : MonoBehaviour
 
     private void FireBullet()
     {
-        if(ammoCount <= 0)
+        if (ammoCount <= 0)
         {
             return;
         }
@@ -130,21 +130,25 @@ public class RaycastWeapon : MonoBehaviour
             {
                 rigidbody.AddForceAtPosition(ray.direction * 10, hitInfo.point, ForceMode.Impulse);
             }
+            var hitbox = hitInfo.collider.GetComponent<Hitbox>();
+            if (hitbox)
+            {
+                hitbox.OnHit(this, ray.direction);
+            }
+
+            bullet.tracer.transform.position = end;
         }
-
-        bullet.tracer.transform.position = end;
     }
-
-    private Bullet CreateBullet(Vector3 position, Vector3 velocity)
-    {
-        Bullet bullet = new Bullet()
+        private Bullet CreateBullet(Vector3 position, Vector3 velocity)
         {
-            initialPosition = position,
-            initialVelocity = velocity,
-            time = 0f,
-            tracer = Instantiate(tracerEffect, position, Quaternion.identity)
-        };
-        bullet.tracer.AddPosition(position);
-        return bullet;
-    }
-}
+            Bullet bullet = new Bullet()
+            {
+                initialPosition = position,
+                initialVelocity = velocity,
+                time = 0f,
+                tracer = Instantiate(tracerEffect, position, Quaternion.identity)
+            };
+            bullet.tracer.AddPosition(position);
+            return bullet;
+        }
+    } 

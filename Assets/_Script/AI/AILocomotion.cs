@@ -5,17 +5,23 @@ using UnityEngine.AI;
 
 public class AILocomotion : MonoBehaviour
 {
-    public Transform playerPoision;
+    public NavMeshAgent meshAgent;
+    private Animator animator;
 
-    private NavMeshAgent meshAgent;
 
     private void Start()
     {
+        
+        animator = GetComponent<Animator>();
         meshAgent = GetComponent<NavMeshAgent>();
+
     }
     private void Update()
     {
-        meshAgent.destination = playerPoision.position;
+        if (meshAgent.hasPath)
+        {
+
+        }
     }
 
 }

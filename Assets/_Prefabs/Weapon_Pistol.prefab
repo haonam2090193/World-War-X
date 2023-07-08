@@ -5974,6 +5974,7 @@ MonoBehaviour:
   weaponRecoil: {fileID: 0}
   ammoCount: 6
   clipSize: 6
+  damage: 55
 --- !u!114 &2163662276853927428
 MonoBehaviour:
   m_ObjectHideFlags: 0

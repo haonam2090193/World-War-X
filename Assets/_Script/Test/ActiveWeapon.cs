@@ -38,7 +38,6 @@ public class ActiveWeapon : MonoBehaviour
     void Update()
     {
         var raycastWeapon = GetWeapon(activeWeaponIdx);
-
         if (raycastWeapon && !isHolstered)
         {
             if (Input.GetButtonDown("Fire1"))
