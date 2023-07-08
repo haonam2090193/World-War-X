@@ -15,6 +15,8 @@ public class ActiveWeapon : MonoBehaviour
     public Transform crosshairTarget;
     public Transform[] weaponSlots;
     public CinemachineFreeLook playerCamera;
+    public AmmoWidget ammoWidget;
+
     private RaycastWeapon[] equippedWeapons = new RaycastWeapon[2];
     private int activeWeaponIdx;
     private bool isHolstered = false;
@@ -90,6 +92,8 @@ public class ActiveWeapon : MonoBehaviour
         raycastWeapon.transform.SetParent(weaponSlots[weaponSlotIndex], false);
         equippedWeapons[weaponSlotIndex] = raycastWeapon;
         SetActiveWeapon(newWeapon.weaponSlot);
+
+        ammoWidget.Refresh(raycastWeapon.ammoCount);
     }
 
     private void SetActiveWeapon(WeaponSlot weaponSlot)

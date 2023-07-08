@@ -8,8 +8,10 @@ public class ReloadWeapon : MonoBehaviour
     public WeaponAnimationEvents animationEvents;
     public ActiveWeapon activeWeapon;
     public Transform leftHand;
+    public AmmoWidget ammoWidget;
 
     GameObject magazineHand;
+
     private void Start()
     {
         animationEvents.WeaponAnimationEvent.AddListener(OnAnimationEvent);
@@ -22,6 +24,11 @@ public class ReloadWeapon : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.R) || weapon.ammoCount <=0)
             {
                 rigController.SetTrigger("reload_weapon");
+            }
+
+            if (weapon.isFiring)
+            {
+                ammoWidget.Refresh(weapon.ammoCount);
             }
         }
     }
@@ -72,5 +79,7 @@ public class ReloadWeapon : MonoBehaviour
         Destroy(magazineHand);
         weapon.ammoCount = weapon.clipSize;
         rigController.ResetTrigger("reload_weapon");
+        ammoWidget.Refresh(weapon.ammoCount);
+
     }
 }
